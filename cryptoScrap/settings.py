@@ -93,7 +93,7 @@ ITEM_PIPELINES = {
 LOG_FILE = '/tmp/scrapy-cryptoscrapspider.log'
 
 ### CosmosDB (DocumentDB) Configuration
-# DOCDB_HOST = 'https://scrapper-temp-storage.documents.azure.com:10255/'
-# DOCDB_DB = 'admin'
-# DOCDB_COLLECTION = '<DOCUMENTDB_COLLECTION_NAME>'
-# DOCDB_MASTER_KEY = '<DOCUMENTDB_MASTER_KEY>'
+DOCDB_HOST = 'https://scrapper-temp-storage.documents.azure.com:10255/'
+DOCDB_DB = 'admin'
+DOCDB_COLLECTION = 'cryptoColdStorage'
+DOCDB_MASTER_KEY = 'HWwwZpghIzn1KHQuh1haaeIsgsnz3xg7dpMwXCB4gTGNtd0it2tU2kqWz22p07G2IRIhD32Nl9DhzbA531e1Ug=='
