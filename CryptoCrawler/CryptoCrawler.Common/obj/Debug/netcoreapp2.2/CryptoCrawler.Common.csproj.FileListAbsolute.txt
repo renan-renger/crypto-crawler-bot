@@ -1,0 +1,17 @@
+D:\Projects\CryptoCrawler\CryptoCrawler.Common\bin\Debug\netcoreapp2.2\CryptoCrawler.Common.deps.json
+D:\Projects\CryptoCrawler\CryptoCrawler.Common\bin\Debug\netcoreapp2.2\CryptoCrawler.Common.dll
+D:\Projects\CryptoCrawler\CryptoCrawler.Common\bin\Debug\netcoreapp2.2\CryptoCrawler.Common.pdb
+D:\Projects\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.csproj.CoreCompileInputs.cache
+D:\Projects\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.AssemblyInfoInputs.cache
+D:\Projects\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.AssemblyInfo.cs
+D:\Projects\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.dll
+D:\Projects\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.pdb
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\bin\Debug\netcoreapp2.2\CryptoCrawler.Common.deps.json
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\bin\Debug\netcoreapp2.2\CryptoCrawler.Common.dll
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\bin\Debug\netcoreapp2.2\CryptoCrawler.Common.pdb
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.csprojAssemblyReference.cache
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.csproj.CoreCompileInputs.cache
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.AssemblyInfoInputs.cache
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.AssemblyInfo.cs
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.dll
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Common\obj\Debug\netcoreapp2.2\CryptoCrawler.Common.pdb
