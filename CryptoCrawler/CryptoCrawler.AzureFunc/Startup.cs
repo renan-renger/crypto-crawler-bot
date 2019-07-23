@@ -1,10 +1,4 @@
-﻿using System;
-using CryptoCrawler.Common.Crawlers;
-using CryptoCrawler.Common.Interfaces;
-using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using RestSharp;
+﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 
 [assembly: FunctionsStartup(typeof(CryptoCrawler.AzureFunc.Startup))]
 
@@ -14,7 +8,7 @@ namespace CryptoCrawler.AzureFunc
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.Services.AddSingleton<IApiCrawler, ApiCrawler>();
+            new Infrastructure.IoC.Services().Configure(builder.Services);
         }
     }
 }

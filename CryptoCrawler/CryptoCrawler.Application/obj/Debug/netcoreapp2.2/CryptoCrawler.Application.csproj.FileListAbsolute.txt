@@ -1,0 +1,8 @@
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Application\bin\Debug\netcoreapp2.2\CryptoCrawler.Application.deps.json
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Application\bin\Debug\netcoreapp2.2\CryptoCrawler.Application.dll
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Application\obj\Debug\netcoreapp2.2\CryptoCrawler.Application.csproj.CoreCompileInputs.cache
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Application\obj\Debug\netcoreapp2.2\CryptoCrawler.Application.AssemblyInfoInputs.cache
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Application\obj\Debug\netcoreapp2.2\CryptoCrawler.Application.AssemblyInfo.cs
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Application\bin\Debug\netcoreapp2.2\CryptoCrawler.Application.pdb
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Application\obj\Debug\netcoreapp2.2\CryptoCrawler.Application.dll
+D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Application\obj\Debug\netcoreapp2.2\CryptoCrawler.Application.pdb
