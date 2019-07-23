@@ -1,8 +1,0 @@
-D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Contracts\bin\Debug\netcoreapp2.2\CryptoCrawler.Contracts.deps.json
-D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Contracts\bin\Debug\netcoreapp2.2\CryptoCrawler.Contracts.dll
-D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Contracts\bin\Debug\netcoreapp2.2\CryptoCrawler.Contracts.pdb
-D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Contracts\obj\Debug\netcoreapp2.2\CryptoCrawler.Contracts.csproj.CoreCompileInputs.cache
-D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Contracts\obj\Debug\netcoreapp2.2\CryptoCrawler.Contracts.AssemblyInfoInputs.cache
-D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Contracts\obj\Debug\netcoreapp2.2\CryptoCrawler.Contracts.AssemblyInfo.cs
-D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Contracts\obj\Debug\netcoreapp2.2\CryptoCrawler.Contracts.dll
-D:\Projects\crypto-crawler-bot\CryptoCrawler\CryptoCrawler.Contracts\obj\Debug\netcoreapp2.2\CryptoCrawler.Contracts.pdb
