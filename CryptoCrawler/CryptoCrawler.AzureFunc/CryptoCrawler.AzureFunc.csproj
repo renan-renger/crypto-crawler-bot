@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.28" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CryptoCrawler.Common\CryptoCrawler.Common.csproj" />
+    <ProjectReference Include="..\CryptoCrawler.Common\CryptoCrawler.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

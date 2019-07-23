@@ -3,9 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.Common", "CryptoCrawler.Common\CryptoCrawler.Common.csproj", "{01BD20BB-F31F-4682-A1FC-E8D5CC0A6A4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.Infrastructure", "CryptoCrawler.Common\CryptoCrawler.Infrastructure.csproj", "{01BD20BB-F31F-4682-A1FC-E8D5CC0A6A4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCrawler.AzureFunc", "CryptoCrawler.AzureFunc\CryptoCrawler.AzureFunc.csproj", "{A36C6661-4AB9-40A7-815B-ACACAA10FEEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.AzureFunc", "CryptoCrawler.AzureFunc\CryptoCrawler.AzureFunc.csproj", "{A36C6661-4AB9-40A7-815B-ACACAA10FEEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Core", "0 - Core", "{B6053818-7C60-42D0-BA92-D1633FEE3088}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Domain", "1 - Domain", "{E15131E3-EF49-47DA-AA7D-810264852333}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{9BF2AC24-EE56-486D-900C-6EABA973E0BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{769D15BA-9807-411F-807F-93D4021F50C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Endpoints", "5 - Endpoints", "{5C62E4C2-1889-47D7-BFE7-32540CF2D8DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +34,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01BD20BB-F31F-4682-A1FC-E8D5CC0A6A4B} = {769D15BA-9807-411F-807F-93D4021F50C0}
+		{A36C6661-4AB9-40A7-815B-ACACAA10FEEE} = {5C62E4C2-1889-47D7-BFE7-32540CF2D8DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DD9E7F1-F9E5-4856-9344-FFC8CD33C2BA}

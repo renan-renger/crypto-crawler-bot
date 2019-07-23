@@ -20,11 +20,12 @@ namespace CryptoCrawler.AzureFunc.Functions
         [FunctionName("BlockchainDataFetcher")]
         public void Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, ILogger log)
         {
+
             if (_crawler.SetupCrawler("https://blockchain.info/q", Method.GET, "hashrate"))
-                log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now} with crawled hashrate: {_crawler.Fetch()}\n\n");
+                log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now} with crawled hashrate: {_crawler.Fetch()}\n");
 
             if (_crawler.SetupCrawler("https://blockchain.info/q", Method.GET, "getdifficulty"))
-                log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now} with crawled difficulty: {_crawler.Fetch()}\n\n");
+                log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now} with crawled difficulty: {_crawler.Fetch()}\n");
         }
     }
 }

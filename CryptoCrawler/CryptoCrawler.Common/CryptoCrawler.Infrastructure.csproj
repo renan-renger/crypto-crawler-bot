@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\" />
-    <Folder Include="Processors\" />
+    <Compile Remove="Domain\**" />
+    <Compile Remove="Processors\**" />
+    <EmbeddedResource Remove="Domain\**" />
+    <EmbeddedResource Remove="Processors\**" />
+    <None Remove="Domain\**" />
+    <None Remove="Processors\**" />
   </ItemGroup>
 
   <ItemGroup>
