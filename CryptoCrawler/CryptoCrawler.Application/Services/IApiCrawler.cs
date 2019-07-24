@@ -3,9 +3,9 @@ using RestSharp.Authenticators;
 
 namespace CryptoCrawler.Application.Services
 {
-    public interface IApiCrawler<T>
+    public interface IApiCrawler<out T>
     {
         bool SetupCrawler(IAuthenticator authToken = null);
-        IList<T> Fetch();
+        T Fetch();
     }
 }

@@ -49,20 +49,33 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
             }
         }
 
-        public IList<BlockchainInfoDomain> Fetch()
+        public BlockchainInfoDomain Fetch()
         {
-            List<BlockchainInfoDomain> retInfo = new List<BlockchainInfoDomain>();
+            List<Tuple<string,string>> tmpTuple = new List<Tuple<string, string>>();
 
-            retInfo.AddRange(resources.Select(resource =>
+            tmpTuple.AddRange(resources.Select(resource =>
             {
                 _restRequest.Resource = resource;
-                return new BlockchainInfoDomain
-                {
-                    fieldName = resource,
-                    fieldValue = _restClient.Execute(_restRequest).Content,
-                    timeStamp = DateTime.UtcNow.AsUtc()
-                };
+                return new Tuple<string, string>(resource, _restClient.Execute(_restRequest).Content);
             }));
+
+            return ProcessFetched(tmpTuple);
+        }
+
+        internal BlockchainInfoDomain ProcessFetched(List<Tuple<string, string>> tmpTuple)
+        {
+            BlockchainInfoDomain retInfo = new BlockchainInfoDomain();
+
+            tmpTuple.ForEach(tuple =>
+            {
+                switch (tuple.Item1)
+                {
+                    case "hashrate":
+
+                        break;
+                }
+            });
+
 
             return retInfo;
         }
