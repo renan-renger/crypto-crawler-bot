@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CryptoCrawler.Application.Domain;
+using CryptoCrawler.Contracts.Domain;
 using CryptoCrawler.Application.Services;
 using CryptoCrawler.Infrastructure.Extensions;
 using RestSharp;
@@ -20,11 +20,11 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
         private readonly string[] resources = {
             "getdifficulty",
             "bcperblock",
-            "avgtxsize/100",
-            "avgtxvalue/100",
+            "avgtxsize/1000",
+            "avgtxvalue/1000",
             "hashrate",
             "interval",
-            "avgtxnumber/100",
+            "avgtxnumber/1000",
             "24hrprice",
             "24hrtransactioncount",
             "24hrbtcsent",

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CryptoCrawler.Application.Domain
+namespace CryptoCrawler.Contracts.Domain
 {
     public class BlockchainInfoDomain
     {
@@ -20,12 +20,12 @@ namespace CryptoCrawler.Application.Domain
         public int BtcRewardPerBlock { get; set; }
 
         /// <summary>
-        /// Average transaction size, in Bytes. Based on the last 100 blocks
+        /// Average transaction size, in Bytes. Based on the last 1000 blocks
         /// </summary>
         public decimal AvgTxSizeBytes { get; set; }
 
         /// <summary>
-        /// Average transaction value, in USD. Based on the last 100 blocks
+        /// Average transaction value, in USD. Based on the last 1000 blocks
         /// </summary>
         public double AvgTxValueUsd { get; set; }
 
@@ -40,7 +40,7 @@ namespace CryptoCrawler.Application.Domain
         public decimal BlockGenerationInterval { get; set; }
 
         /// <summary>
-        /// Average number of transactions per block. Based on the last 100 blocks
+        /// Average number of transactions per block. Based on the last 1000 blocks
         /// </summary>
         public int AvgTxPerBlock { get; set; }
 

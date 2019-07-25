@@ -1,5 +1,5 @@
 using System;
-using CryptoCrawler.Application.Domain;
+using CryptoCrawler.Contracts.Domain;
 using CryptoCrawler.Application.Services;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
@@ -17,7 +17,7 @@ namespace CryptoCrawler.AzureFunc.Functions
         }
 
         [FunctionName("BlockchainDataFetcher")]
-        public void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, ILogger log)
         {
             if (!_crawler.SetupCrawler()) return;
 
