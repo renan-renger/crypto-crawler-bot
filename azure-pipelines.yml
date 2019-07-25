@@ -21,13 +21,8 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration Release'
 - task: DotNetCoreCLI@2
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
-- task: DotNetCoreCLI@2
+  displayName: Generate Artifact
   inputs:
     command: publish
-    publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
