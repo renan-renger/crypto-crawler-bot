@@ -15,10 +15,20 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
         private static IRestRequest _restRequest;
         private const string endpointAddress = "https://blockchain.info/q";
         private const Method method = Method.GET;
+        private const int satoshiToBtcRate = 100000000;
 
         private readonly string[] resources = {
+            "getdifficulty",
+            "bcperblock",
+            "avgtxsize/100",
+            "avgtxvalue/100",
             "hashrate",
-            "getdifficulty"
+            "interval",
+            "avgtxnumber/100",
+            "24hrprice",
+            "24hrtransactioncount",
+            "24hrbtcsent",
+            "unconfirmedcount"
         };
 
         public BlockchainInfoCrawler()
@@ -64,14 +74,49 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
 
         internal BlockchainInfoDomain ProcessFetched(List<Tuple<string, string>> tmpTuple)
         {
-            BlockchainInfoDomain retInfo = new BlockchainInfoDomain();
+            BlockchainInfoDomain retInfo = new BlockchainInfoDomain
+            {
+                Timestamp = DateTime.UtcNow.AsUtc()
+            };
 
             tmpTuple.ForEach(tuple =>
             {
-                switch (tuple.Item1)
-                {
-                    case "hashrate":
+                var (resource, fetchedString) = tuple;
 
+                switch (resource)
+                {
+                    case "getdifficulty":
+                        retInfo.CurrentDifficulty = double.Parse(fetchedString);
+                        break;
+                    case "bcperblock":
+                        retInfo.BtcRewardPerBlock = int.Parse(fetchedString) / satoshiToBtcRate;
+                        break;
+                    case "avgtxsize/1000":
+                        retInfo.AvgTxSizeBytes = decimal.Parse(fetchedString);
+                        break;
+                    case "avgtxvalue/1000":
+                        retInfo.AvgTxValueUsd = double.Parse(fetchedString);
+                        break;
+                    case "hashrate":
+                        retInfo.Hashrate = (int)(long.Parse(fetchedString) / 1000);
+                        break;
+                    case "interval":
+                        retInfo.BlockGenerationInterval = decimal.Parse(fetchedString);
+                        break;
+                    case "avgtxnumber/1000":
+                        retInfo.AvgTxPerBlock = (int)double.Parse(fetchedString);
+                        break;
+                    case "24hrprice":
+                        retInfo.WeightedAvgPriceUsd = decimal.Parse(fetchedString);
+                        break;
+                    case "24hrtransactioncount":
+                        retInfo.DailyTransactionCount = int.Parse(fetchedString);
+                        break;
+                    case "24hrbtcsent":
+                        retInfo.DailyBtcSent = decimal.Parse(fetchedString) / satoshiToBtcRate;
+                        break;
+                    case "unconfirmedcount":
+                        retInfo.UnconfirmedTransactionCount = int.Parse(fetchedString);
                         break;
                 }
             });
