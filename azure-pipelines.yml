@@ -26,11 +26,18 @@ steps:
     command: build
     projects: '**/*.csproj'
 - task: DotNetCoreCLI@2
-  displayName: Publish
+  displayName: Publish Azure Function
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: '**/*.csproj'
+    projects: '**/CryptoCrawler.AzureFunc.csproj'
+    arguments: '--no-restore --configuration Release --output $(Build.ArtifactStagingDirectory)'
+- task: DotNetCoreCLI@2
+  displayName: Publish Contracts
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '**/CryptoCrawler.Contracts.csproj'
     arguments: '--no-restore --configuration Release --output $(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: Generate Artifacts
