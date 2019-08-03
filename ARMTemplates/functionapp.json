@@ -52,7 +52,7 @@
         "apiVersion": "2014-04-01",
         "name": "[variables('appInsightsName')]",
         "type": "Microsoft.Insights/components",
-        "location": "[resourceGroup().location]",
+        "location": "eastus",
         "properties": {
           "applicationId": "[variables('appInsightsName')]"
         }
