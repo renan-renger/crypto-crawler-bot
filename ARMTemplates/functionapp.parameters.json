@@ -4,6 +4,9 @@
     "parameters": {
       "appName": {
         "value": "crypto-crawler"
+      },
+      "appInsightsName": {
+        "value": "crypto-app-insights"
       }
     }
   }
