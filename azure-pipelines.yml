@@ -15,15 +15,32 @@ variables:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: Restore NuGet Packages
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
+- task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: build
     projects: '**/*.csproj'
-    arguments: '--configuration Release'
 - task: DotNetCoreCLI@2
-  displayName: Generate Artifact
+  displayName: Publish
   inputs:
-    command: publish
+    command: 'publish'
     publishWebProjects: false
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
+    projects: '**/*.csproj'
+    arguments: '--no-restore --configuration Release --output $(Build.ArtifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
+  displayName: Generate Artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'artifacts'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  displayName: Generate ARM Templates
+  inputs:
+    PathtoPublish: 'ARMTemplates'
+    ArtifactName: 'artifacts'
+    publishLocation: 'Container'
