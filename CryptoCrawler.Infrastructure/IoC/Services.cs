@@ -14,7 +14,7 @@ namespace CryptoCrawler.Infrastructure.IoC
         {
             services.AddScoped<IApiCrawler<BlockchainInfoDomain>, BlockchainInfoCrawler>();
             services.AddScoped<IProcessScrapedDataBuilder, ProcessScrapedDataBuilder>();
-            services.AddScoped<ICommandSender<ProcessScrapedData>, ServiceBusSender>();
+            services.AddScoped<IMessageSender<ProcessScrapedData>, ServiceBusSender>();
         }
     }
 }

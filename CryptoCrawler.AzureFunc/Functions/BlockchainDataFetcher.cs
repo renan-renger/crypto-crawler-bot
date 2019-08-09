@@ -14,9 +14,9 @@ namespace CryptoCrawler.AzureFunc.Functions
     {
         private readonly IApiCrawler<BlockchainInfoDomain> _crawler;
         private readonly IProcessScrapedDataBuilder _builder;
-        private readonly ICommandSender<ProcessScrapedData> _sender;
+        private readonly IMessageSender<ProcessScrapedData> _sender;
 
-        public BlockchainDataFetcher(IApiCrawler<BlockchainInfoDomain> crawler, IProcessScrapedDataBuilder builder, ICommandSender<ProcessScrapedData> sender)
+        public BlockchainDataFetcher(IApiCrawler<BlockchainInfoDomain> crawler, IProcessScrapedDataBuilder builder, IMessageSender<ProcessScrapedData> sender)
         {
             _crawler = crawler;
             _builder = builder;
@@ -24,15 +24,15 @@ namespace CryptoCrawler.AzureFunc.Functions
         }
 
         [FunctionName("BlockchainDataFetcher")]
-        public void Run([TimerTrigger("0 */10 * * * *")]TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, ILogger log)
         {
             try
             {
                 if (!_crawler.SetupCrawler()) return;
 
-                log.LogInformation($"\n{ JsonConvert.SerializeObject(_builder.BuildCommand(new List<object> { _crawler.Fetch() }, _crawler.ExposeEndpoint())) }\n");
+                //log.LogInformation($"\n{ JsonConvert.SerializeObject(_builder.BuildCommand(new List<object> { _crawler.Fetch() }, _crawler.ExposeEndpoint())) }\n");
 
-                //_sender.SendCommand(_builder.BuildCommand(new List<object> { _crawler.Fetch() }, _crawler.ExposeEndpoint()));
+                _sender.SendCommand(_builder.BuildCommand(new List<object> { _crawler.Fetch() }, _crawler.ExposeEndpoint()));
 
                 log.LogInformation($"BlockchainDataFetcher ran to completion @ {DateTime.UtcNow.AsUtc()}\n");
             }
