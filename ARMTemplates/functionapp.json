@@ -53,7 +53,7 @@
       "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
       "functionWorkerRuntime": "[parameters('runtime')]",
       "appInsightsName": "[if(equals(parameters('appInsightsName'),''), parameters('appName'), parameters('appInsightsName'))]",
-      "serviceBusConnectionSecret": "[parameters('serviceBusConnectionSecret')]",
+      "serviceBusConnectionSecret": "[parameters('serviceBusConnectionSecret')]"
     },
     "resources": [
       {
