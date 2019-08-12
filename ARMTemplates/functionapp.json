@@ -15,6 +15,13 @@
           "description": "The name of the ApplicationInsight bound to function app that you wish to create."
         }
       },
+      "serviceBusConnectionSecret": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description": "Azure ServiceBus used to connect all the services together."
+        }
+      },
       "storageAccountType": {
         "type": "string",
         "defaultValue": "Standard_LRS",
@@ -45,7 +52,8 @@
       "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
       "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
       "functionWorkerRuntime": "[parameters('runtime')]",
-      "appInsightsName": "[if(equals(parameters('appInsightsName'),''), parameters('appName'), parameters('appInsightsName'))]"
+      "appInsightsName": "[if(equals(parameters('appInsightsName'),''), parameters('appName'), parameters('appInsightsName'))]",
+      "serviceBusConnectionSecret": "[parameters('serviceBusConnectionSecret')]",
     },
     "resources": [
       {
@@ -88,6 +96,9 @@
           "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
           "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
         ],
+        "identity": { 
+          "type": "SystemAssigned"
+        },
         "properties": {
           "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
           "siteConfig": {
@@ -123,6 +134,11 @@
               {
                 "name": "FUNCTIONS_WORKER_RUNTIME",
                 "value": "[variables('functionWorkerRuntime')]"
+              },
+              {
+                "name": "ServiceBusConnectionString",
+                "value": "[concat('@Microsoft.KeyVault(SecretUri={', variables('serviceBusConnectionSecret'), '})'",
+                "slotSetting": false
               }
             ]
           }

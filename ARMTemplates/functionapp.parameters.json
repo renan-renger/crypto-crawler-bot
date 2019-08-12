@@ -7,6 +7,9 @@
       },
       "appInsightsName": {
         "value": "crypto-app-insights"
+      },
+      "serviceBusConnectionSecret": {
+        "value": "https://prediction-vault.vault.azure.net/secrets/ASB-Write-Only/2c1dc2aeedaf4402b270745c4b6220c0"
       }
     }
   }

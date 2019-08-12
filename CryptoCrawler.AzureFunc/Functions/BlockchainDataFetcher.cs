@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using CryptoCrawler.Infrastructure.Extensions;
 using CryptoCrawler.Contracts.Messaging.Command;
-using Newtonsoft.Json;
 
 namespace CryptoCrawler.AzureFunc.Functions
 {
@@ -29,8 +28,6 @@ namespace CryptoCrawler.AzureFunc.Functions
             try
             {
                 if (!_crawler.SetupCrawler()) return;
-
-                //log.LogInformation($"\n{ JsonConvert.SerializeObject(_builder.BuildCommand(new List<object> { _crawler.Fetch() }, _crawler.ExposeEndpoint())) }\n");
 
                 _sender.SendCommand(_builder.BuildCommand(new List<object> { _crawler.Fetch() }, _crawler.ExposeEndpoint()));
 
