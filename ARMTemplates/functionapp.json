@@ -137,8 +137,7 @@
               },
               {
                 "name": "ServiceBusConnectionString",
-                "value": "[concat('@Microsoft.KeyVault(SecretUri={', variables('serviceBusConnectionSecret'), '})'",
-                "slotSetting": false
+                "value": "[concat('@Microsoft.KeyVault(SecretUri=', variables('serviceBusConnectionSecret'), ')'"
               }
             ]
           }
