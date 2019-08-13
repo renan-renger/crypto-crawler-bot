@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CryptoCrawler.Application\CryptoCrawler.Application.csproj" />
     <ProjectReference Include="..\CryptoCrawler.Contracts\CryptoCrawler.Contracts.csproj" />
+    <ProjectReference Include="..\CryptoCrawler.InternalContracts\CryptoCrawler.InternalContracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

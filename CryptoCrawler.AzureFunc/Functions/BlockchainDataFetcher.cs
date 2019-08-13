@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using CryptoCrawler.Infrastructure.Extensions;
 using CryptoCrawler.Contracts.Messaging.Command;
+using CryptoCrawler.InternalContracts.SenderTypes;
 
 namespace CryptoCrawler.AzureFunc.Functions
 {
@@ -13,9 +14,9 @@ namespace CryptoCrawler.AzureFunc.Functions
     {
         private readonly IApiCrawler<BlockchainInfoDomain> _crawler;
         private readonly IProcessScrapedDataBuilder _builder;
-        private readonly IMessageSender<ProcessScrapedData> _sender;
+        private readonly IMessageSender<ProcessScrapedData, IAzureServiceBusType> _sender;
 
-        public BlockchainDataFetcher(IApiCrawler<BlockchainInfoDomain> crawler, IProcessScrapedDataBuilder builder, IMessageSender<ProcessScrapedData> sender)
+        public BlockchainDataFetcher(IApiCrawler<BlockchainInfoDomain> crawler, IProcessScrapedDataBuilder builder, IMessageSender<ProcessScrapedData, IAzureServiceBusType> sender)
         {
             _crawler = crawler;
             _builder = builder;

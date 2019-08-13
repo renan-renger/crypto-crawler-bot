@@ -6,10 +6,11 @@ using CryptoCrawler.Contracts.Messaging.Command;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
+using CryptoCrawler.InternalContracts.SenderTypes;
 
 namespace CryptoCrawler.Infrastructure.Services.Messaging
 {
-    public class ServiceBusSender : IMessageSender<ProcessScrapedData>
+    public class ServiceBusSender : IMessageSender<ProcessScrapedData, IAzureServiceBusType>
     {
         private readonly QueueClient _queueClient;
         private readonly TopicClient _topicClient;

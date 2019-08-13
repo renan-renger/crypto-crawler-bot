@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CryptoCrawler.Contracts\CryptoCrawler.Contracts.csproj" />
     <ProjectReference Include="..\CryptoCrawler.Infrastructure\CryptoCrawler.Infrastructure.csproj" />
+    <ProjectReference Include="..\CryptoCrawler.InternalContracts\CryptoCrawler.InternalContracts.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">

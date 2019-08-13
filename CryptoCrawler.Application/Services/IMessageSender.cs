@@ -2,10 +2,10 @@
 
 namespace CryptoCrawler.Application.Services
 {
-    public interface IMessageSender<T>
+    public interface IMessageSender<TMessage, TSender>
     {
-        Task SendCommand(T command);
+        Task SendCommand(TMessage command);
 
-        Task SendEvent(T eventData);
+        Task SendEvent(TMessage eventData);
     }
 }
