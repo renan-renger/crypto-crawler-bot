@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Endpoints", "4 - Endpoi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.Application", "CryptoCrawler.Application\CryptoCrawler.Application.csproj", "{4D2057EA-8C72-4DF0-9DAC-E1F70104AD70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCrawler.Contracts", "CryptoCrawler.Contracts\CryptoCrawler.Contracts.csproj", "{BE69F462-A7C2-4F39-AC0F-E84D9050CB2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.Contracts", "CryptoCrawler.Contracts\CryptoCrawler.Contracts.csproj", "{BE69F462-A7C2-4F39-AC0F-E84D9050CB2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCrawler.InternalContracts", "CryptoCrawler.InternalContracts\CryptoCrawler.InternalContracts.csproj", "{ADCDE054-1BA7-4D38-A60B-8BCDB3060A79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{BE69F462-A7C2-4F39-AC0F-E84D9050CB2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE69F462-A7C2-4F39-AC0F-E84D9050CB2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE69F462-A7C2-4F39-AC0F-E84D9050CB2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADCDE054-1BA7-4D38-A60B-8BCDB3060A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADCDE054-1BA7-4D38-A60B-8BCDB3060A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADCDE054-1BA7-4D38-A60B-8BCDB3060A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADCDE054-1BA7-4D38-A60B-8BCDB3060A79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,7 +57,8 @@ Global
 		{01BD20BB-F31F-4682-A1FC-E8D5CC0A6A4B} = {769D15BA-9807-411F-807F-93D4021F50C0}
 		{A36C6661-4AB9-40A7-815B-ACACAA10FEEE} = {5C62E4C2-1889-47D7-BFE7-32540CF2D8DB}
 		{4D2057EA-8C72-4DF0-9DAC-E1F70104AD70} = {9BF2AC24-EE56-486D-900C-6EABA973E0BE}
-		{BE69F462-A7C2-4F39-AC0F-E84D9050CB2B} = {E15131E3-EF49-47DA-AA7D-810264852333}
+		{BE69F462-A7C2-4F39-AC0F-E84D9050CB2B} = {B6053818-7C60-42D0-BA92-D1633FEE3088}
+		{ADCDE054-1BA7-4D38-A60B-8BCDB3060A79} = {E15131E3-EF49-47DA-AA7D-810264852333}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8DD9E7F1-F9E5-4856-9344-FFC8CD33C2BA}

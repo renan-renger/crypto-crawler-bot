@@ -23,7 +23,7 @@ steps:
     projects: '**/*.csproj'
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: Build All
   inputs:
     command: build
     projects: '**/*.csproj'
@@ -35,12 +35,16 @@ steps:
     projects: '**/CryptoCrawler.AzureFunc.csproj'
     arguments: '--no-restore --configuration Release --output $(Build.ArtifactStagingDirectory)'
 - task: DotNetCoreCLI@2
-  displayName: Publish Contracts
+  displayName: Pack Contracts
   inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/CryptoCrawler.Contracts.csproj'
-    arguments: '--no-restore --configuration Release --output $(Build.ArtifactStagingDirectory)'
+    command: 'pack'
+    packagesToPack: '**/CryptoCrawler.Contracts.csproj'
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    publishVstsFeed: 'crypto_predictor_nuget'
+    allowPackageConflicts: true
 - task: PublishBuildArtifacts@1
   displayName: Generate Artifacts
   inputs:
