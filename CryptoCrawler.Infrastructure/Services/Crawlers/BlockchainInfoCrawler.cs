@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CryptoCrawler.Contracts.Domain;
 using CryptoCrawler.Application.Services;
-using CryptoCrawler.Infrastructure.Extensions;
 using RestSharp;
 using RestSharp.Authenticators;
 
@@ -15,7 +14,6 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
         private static IRestRequest _restRequest;
         private const string endpointAddress = "https://blockchain.info/q";
         private const Method method = Method.GET;
-        private const int satoshiToBtcRate = 100000000;
 
         private readonly string[] resources = {
             "getdifficulty",
@@ -66,18 +64,18 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
             tmpTuple.AddRange(resources.Select(resource =>
             {
                 _restRequest.Resource = resource;
-                return new Tuple<string, string>(resource, _restClient.Execute(_restRequest).Content);
+                var response = _restClient.Execute(_restRequest);
+                return new Tuple<string, string>(resource, response.IsSuccessful ? response.Content : string.Empty);
             }));
 
             return ProcessFetched(tmpTuple);
         }
 
+        public string ExposeEndpoint() { return endpointAddress; }
+
         internal BlockchainInfoDomain ProcessFetched(List<Tuple<string, string>> tmpTuple)
         {
-            BlockchainInfoDomain retInfo = new BlockchainInfoDomain
-            {
-                Timestamp = DateTime.UtcNow.AsUtc()
-            };
+            BlockchainInfoDomain retInfo = new BlockchainInfoDomain();
 
             tmpTuple.ForEach(tuple =>
             {
@@ -86,37 +84,37 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
                 switch (resource)
                 {
                     case "getdifficulty":
-                        retInfo.CurrentDifficulty = double.Parse(fetchedString);
+                        retInfo.CurrentDifficulty = double.TryParse(fetchedString, out var tmpCD) ? tmpCD : (double?)null;
                         break;
                     case "bcperblock":
-                        retInfo.BtcRewardPerBlock = int.Parse(fetchedString) / satoshiToBtcRate;
+                        retInfo.BtcRewardPerBlock = int.TryParse(fetchedString, out var tmpRPB) ? tmpRPB / 100000000 : (int?)null;
                         break;
                     case "avgtxsize/1000":
-                        retInfo.AvgTxSizeBytes = decimal.Parse(fetchedString);
+                        retInfo.AvgTxSizeBytes = decimal.TryParse(fetchedString, out var tmpTxBytes) ? tmpTxBytes : (decimal?)null;
                         break;
                     case "avgtxvalue/1000":
-                        retInfo.AvgTxValueUsd = double.Parse(fetchedString);
+                        retInfo.AvgTxValueUsd = double.TryParse(fetchedString, out var tmpTxValue) ? tmpTxValue : (double?)null;
                         break;
                     case "hashrate":
-                        retInfo.Hashrate = (int)(long.Parse(fetchedString) / 1000);
+                        retInfo.Hashrate = long.TryParse(fetchedString, out var tmpHashRate) ? (int)(tmpHashRate / 1000) : (int?)null;
                         break;
                     case "interval":
-                        retInfo.BlockGenerationInterval = decimal.Parse(fetchedString);
+                        retInfo.BlockGenerationInterval = decimal.TryParse(fetchedString, out var tmpBlkGen) ? tmpBlkGen : (decimal?)null;
                         break;
                     case "avgtxnumber/1000":
-                        retInfo.AvgTxPerBlock = (int)double.Parse(fetchedString);
+                        retInfo.AvgTxPerBlock = double.TryParse(fetchedString, out var tmpTxBlc) ? (int)tmpTxBlc : (int?)null;
                         break;
                     case "24hrprice":
-                        retInfo.WeightedAvgPriceUsd = decimal.Parse(fetchedString);
+                        retInfo.WeightedAvgPriceUsd = decimal.TryParse(fetchedString, out var tmpWgPrice) ? tmpWgPrice : (decimal?)null;
                         break;
                     case "24hrtransactioncount":
-                        retInfo.DailyTransactionCount = int.Parse(fetchedString);
+                        retInfo.DailyTransactionCount = int.TryParse(fetchedString, out var tmpTransCount) ? tmpTransCount : (int?)null;
                         break;
                     case "24hrbtcsent":
-                        retInfo.DailyBtcSent = decimal.Parse(fetchedString) / satoshiToBtcRate;
+                        retInfo.DailyBtcSent = decimal.TryParse(fetchedString, out var tmpBtcSent) ? tmpBtcSent / 100000000 : (decimal?)null;
                         break;
                     case "unconfirmedcount":
-                        retInfo.UnconfirmedTransactionCount = int.Parse(fetchedString);
+                        retInfo.UnconfirmedTransactionCount = int.TryParse(fetchedString, out var tmpUnconfirmCount) ? tmpUnconfirmCount : (int?)null;
                         break;
                 }
             });

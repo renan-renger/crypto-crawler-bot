@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using RestSharp.Authenticators;
+﻿using RestSharp.Authenticators;
 
 namespace CryptoCrawler.Application.Services
 {
@@ -7,5 +6,6 @@ namespace CryptoCrawler.Application.Services
     {
         bool SetupCrawler(IAuthenticator authToken = null);
         T Fetch();
+        string ExposeEndpoint();
     }
 }
