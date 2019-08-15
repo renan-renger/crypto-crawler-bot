@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "namespaces_crypto_comm_bus_name": {
-            "value": null
+            "value": "crypto-comm-bus"
         }
     }
 }
