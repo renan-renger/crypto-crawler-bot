@@ -10,6 +10,12 @@
       },
       "serviceBusConnectionSecret": {
         "value": "https://prediction-vault.vault.azure.net/secrets/ASB-Mixed-Key/8e655765f81041c6bc715d558cc1f110"
+      },
+      "queueName": {
+        "value": "pendingProcess"
+      },
+      "topicName": {
+        "value": "fetchedData"
       }
     }
   }

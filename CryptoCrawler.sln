@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.Infrastructure", "CryptoCrawler.Infrastructure\CryptoCrawler.Infrastructure.csproj", "{01BD20BB-F31F-4682-A1FC-E8D5CC0A6A4B}"
 EndProject
@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.Contracts", "CryptoCrawler.Contracts\CryptoCrawler.Contracts.csproj", "{BE69F462-A7C2-4F39-AC0F-E84D9050CB2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCrawler.InternalContracts", "CryptoCrawler.InternalContracts\CryptoCrawler.InternalContracts.csproj", "{ADCDE054-1BA7-4D38-A60B-8BCDB3060A79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoCrawler.InternalContracts", "CryptoCrawler.InternalContracts\CryptoCrawler.InternalContracts.csproj", "{ADCDE054-1BA7-4D38-A60B-8BCDB3060A79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

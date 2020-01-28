@@ -59,7 +59,7 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
 
         public BlockchainInfoDomain Fetch()
         {
-            List<Tuple<string,string>> tmpTuple = new List<Tuple<string, string>>();
+            var tmpTuple = new List<Tuple<string, string>>();
 
             tmpTuple.AddRange(resources.Select(resource =>
             {
@@ -75,7 +75,7 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
 
         internal BlockchainInfoDomain ProcessFetched(List<Tuple<string, string>> tmpTuple)
         {
-            BlockchainInfoDomain retInfo = new BlockchainInfoDomain();
+            var retInfo = new BlockchainInfoDomain();
 
             tmpTuple.ForEach(tuple =>
             {

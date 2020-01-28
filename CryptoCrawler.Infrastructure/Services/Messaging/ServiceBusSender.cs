@@ -2,7 +2,6 @@
 using System.Text;
 using System.Threading.Tasks;
 using CryptoCrawler.Application.Services;
-using CryptoCrawler.Contracts.Messaging.Command;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
@@ -10,23 +9,23 @@ using CryptoCrawler.InternalContracts.SenderTypes;
 
 namespace CryptoCrawler.Infrastructure.Services.Messaging
 {
-    public class ServiceBusSender : IMessageSender<ProcessScrapedData, IAzureServiceBusType>
+    public class ServiceBusSender : IMessageSender<object, IAzureServiceBusType>
     {
-        private readonly QueueClient _queueClient;
-        private readonly TopicClient _topicClient;
-        private const string queueName = "pendingProcess";
+        private static QueueClient _queueClient;
+        private static TopicClient _topicClient;
 
         public ServiceBusSender(IConfiguration configuration)
         {
             _queueClient = new QueueClient(
-                Environment.GetEnvironmentVariable("ServiceBusConnectionString"),
-                queueName);
+                configuration["ServiceBusConnectionString"],
+                configuration["queueName"]);
+
             _topicClient = new TopicClient(
-                Environment.GetEnvironmentVariable("ServiceBusConnectionString"),
-                queueName);
+                configuration["ServiceBusConnectionString"],
+                configuration["topicName"]);
         }
 
-        public async Task SendCommand(ProcessScrapedData command)
+        public async Task SendCommand(object command)
         {
             try
             {
@@ -47,9 +46,8 @@ namespace CryptoCrawler.Infrastructure.Services.Messaging
             }
         }
 
-        public async Task SendEvent(ProcessScrapedData eventData)
+        public async Task SendEvent(object eventData)
         {
-            
             try
             {
                 string data = JsonConvert.SerializeObject(eventData);
