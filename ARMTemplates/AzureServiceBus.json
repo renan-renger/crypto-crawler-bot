@@ -172,44 +172,6 @@
                 "enableBatchedOperations": false,
                 "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
             }
-        },
-        {
-            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
-            "apiVersion": "2017-04-01",
-            "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/fetcheddata/ColdStorage/$Default')]",
-            "location": "Brazil South",
-            "dependsOn": [
-                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_crypto_comm_bus_name'), 'fetcheddata', 'ColdStorage')]",
-                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_crypto_comm_bus_name'), 'fetcheddata')]",
-                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_crypto_comm_bus_name'))]"
-            ],
-            "properties": {
-                "action": {},
-                "filterType": "SqlFilter",
-                "sqlFilter": {
-                    "sqlExpression": "1=1",
-                    "compatibilityLevel": 20
-                }
-            }
-        },
-        {
-            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
-            "apiVersion": "2017-04-01",
-            "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/fetcheddata/manualLookup/$Default')]",
-            "location": "Brazil South",
-            "dependsOn": [
-                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_crypto_comm_bus_name'), 'fetcheddata', 'manualLookup')]",
-                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_crypto_comm_bus_name'), 'fetcheddata')]",
-                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_crypto_comm_bus_name'))]"
-            ],
-            "properties": {
-                "action": {},
-                "filterType": "SqlFilter",
-                "sqlFilter": {
-                    "sqlExpression": "1=1",
-                    "compatibilityLevel": 20
-                }
-            }
         }
     ]
 }
