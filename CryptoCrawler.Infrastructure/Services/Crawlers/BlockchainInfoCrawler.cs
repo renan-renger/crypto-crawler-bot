@@ -10,10 +10,10 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
 {
     public class BlockchainInfoCrawler : IApiCrawler<BlockchainInfoDomain>
     {
-        private static IRestClient _restClient;
-        private static IRestRequest _restRequest;
+        private static RestClient _restClient;
+        private static RestRequest _restRequest;
         private const string endpointAddress = "https://blockchain.info/q";
-        private const Method method = Method.GET;
+        private const Method method = Method.Get;
 
         private readonly string[] resources = {
             "getdifficulty",
@@ -42,7 +42,7 @@ namespace CryptoCrawler.Infrastructure.Services.Crawlers
                 if (string.IsNullOrWhiteSpace(endpointAddress))
                     return false;
 
-                _restClient.BaseUrl = new Uri(endpointAddress);
+                _restClient.Options.BaseUrl = new Uri(endpointAddress);
 
                 if (authToken != null)
                     _restClient.Authenticator = authToken;

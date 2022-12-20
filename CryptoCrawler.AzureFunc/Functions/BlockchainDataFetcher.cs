@@ -5,8 +5,8 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using CryptoCrawler.Infrastructure.Extensions;
-using CryptoCrawler.Contracts.Messaging.Command;
 using CryptoCrawler.InternalContracts.SenderTypes;
+using System.Runtime.CompilerServices;
 
 namespace CryptoCrawler.AzureFunc.Functions
 {
@@ -14,23 +14,34 @@ namespace CryptoCrawler.AzureFunc.Functions
     {
         private readonly IApiCrawler<BlockchainInfoDomain> _crawler;
         private readonly IProcessScrapedDataBuilder _builder;
-        private readonly IMessageSender<object, IAzureServiceBusType> _sender;
+        private readonly IQueueClient<IAzureServiceBusQueueType> _queueClient;
+        private readonly ITopicClient<IAzureServiceBusTopicType> _topicClient;
 
-        public BlockchainDataFetcher(IApiCrawler<BlockchainInfoDomain> crawler, IProcessScrapedDataBuilder builder, IMessageSender<object, IAzureServiceBusType> sender)
+        private readonly string _queueName = "PendingProcessing";
+        private readonly string _topicName = "ScrappedData";
+
+        public BlockchainDataFetcher(IApiCrawler<BlockchainInfoDomain> crawler, IProcessScrapedDataBuilder builder, IQueueClient<IAzureServiceBusQueueType> queueClient, ITopicClient<IAzureServiceBusTopicType> topicClient)
         {
             _crawler = crawler;
             _builder = builder;
-            _sender = sender;
+            _queueClient = queueClient;
+            _topicClient = topicClient;
+
+            _queueClient.CreateQueue(_queueName).Wait();
+            _topicClient.CreateTopic(_topicName).Wait();            
         }
 
         [FunctionName("BlockchainDataFetcher")]
-        public void Run([TimerTrigger("0 */10 * * * *")]TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("0 */60 * * * *")]TimerInfo myTimer, ILogger log)
         {
             try
             {
                 if (!_crawler.SetupCrawler()) return;
 
-                _sender.SendEvent(_builder.BuildCommand(new List<object> { _crawler.Fetch() }, _crawler.ExposeEndpoint()));
+                var payload = _builder.BuildCommand(new List<object> { _crawler.Fetch() }, _crawler.ExposeEndpoint());
+
+                _queueClient.SendMessage(payload, _queueName);
+                _topicClient.PublishToSubscription(payload, _topicName);
 
                 log.LogInformation($"BlockchainDataFetcher ran to completion @ {DateTime.UtcNow.AsUtc()}\n");
             }

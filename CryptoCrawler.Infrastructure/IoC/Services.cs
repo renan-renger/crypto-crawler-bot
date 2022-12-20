@@ -3,9 +3,10 @@ using CryptoCrawler.Application.Services;
 using CryptoCrawler.Infrastructure.Services.Crawlers;
 using Microsoft.Extensions.DependencyInjection;
 using CryptoCrawler.Infrastructure.Services.Builders;
-using CryptoCrawler.Contracts.Messaging.Command;
 using CryptoCrawler.Infrastructure.Services.Messaging;
 using CryptoCrawler.InternalContracts.SenderTypes;
+using System.Collections.Generic;
+using CryptoCrawler.InternalContracts.Domain;
 
 namespace CryptoCrawler.Infrastructure.IoC
 {
@@ -15,8 +16,10 @@ namespace CryptoCrawler.Infrastructure.IoC
         {
             services.AddScoped<IApiCrawler<BlockchainInfoDomain>, BlockchainInfoCrawler>();
             services.AddScoped<IProcessScrapedDataBuilder, ProcessScrapedDataBuilder>();
-            services.AddScoped<IMessageSender<object, IAzureServiceBusType>, ServiceBusSender>();
-            services.AddScoped<IMessageReceiver<IAzureServiceBusType>, ServiceBusReceiver>();
+            services.AddSingleton<IQueueClient<IAzureServiceBusQueueType>, AzureServiceBusQueueClient>();
+            services.AddSingleton<ITopicClient<IAzureServiceBusTopicType>, AzureServiceBusTopicClient>();
+            services.AddScoped<IApiCrawler<List<MercadoBitcoinTicker>>, MercadoBitcoinTickerCrawler>();
+            services.AddScoped<IApiCrawler<MercadoBitcoinAuthorizationResponse>, MercadoBitcoinAuthorizationCrawler>();
         }
     }
 }
