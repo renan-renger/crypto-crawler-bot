@@ -45,7 +45,7 @@
             "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/MixedUsageKey')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[WaitSection]"
+                "WaitSection"
             ],
             "properties": {
                 "rights": [
@@ -60,7 +60,7 @@
             "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/ReaderKey')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[WaitSection]"
+                "WaitSection"
             ],
             "properties": {
                 "rights": [
@@ -74,7 +74,7 @@
             "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/RootManageSharedAccessKey')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[WaitSection]"
+                "WaitSection"
             ],
             "properties": {
                 "rights": [
@@ -90,7 +90,7 @@
             "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/SenderKey')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[WaitSection]"
+                "WaitSection"
             ],
             "properties": {
                 "rights": [
