@@ -44,6 +44,20 @@
         "metadata": {
           "description": "The language worker runtime to load in the function app."
         }
+      },
+      "queueName": {
+        "type": "string",
+        "defaultValue": "defaultQueue",
+        "metadata": {
+          "description": "Default ASB Queue for stack communication"
+        }
+      },
+      "topicName": {
+        "type": "string",
+        "defaultValue": "defaultTopic",
+        "metadata": {
+          "description": "Default ASB Topic for stack communication"
+        }
       }
     },
     "variables": {
@@ -138,6 +152,14 @@
               {
                 "name": "ServiceBusConnectionString",
                 "value": "[concat('@Microsoft.KeyVault(SecretUri=', variables('serviceBusConnectionSecret'), ')')]"
+              },
+              {
+                "name": "queueName",
+                "value": "variables('queueName')"
+              },
+              {
+                "name": "topicName",
+                "value": "variables('topicName')"
               }
             ]
           }
