@@ -8,14 +8,22 @@
       "appInsightsName": {
         "value": "crypto-app-insights"
       },
-      "serviceBusConnectionSecret": {
-        "value": "https://prediction-vault.vault.azure.net/secrets/ASB-Mixed-Key/8e655765f81041c6bc715d558cc1f110"
+      "TenantId": {
+        "value": "https://prediction-vault.vault.azure.net/secrets/TenantId/ec61ec40e24143ce8557ce6592f3d267"
       },
-      "queueName": {
-        "value": "pendingProcess"
+      "UserAssignedClientId": {
+        "value": "https://prediction-vault.vault.azure.net/secrets/UserAssignedClientId/7b2d2db7a8b142e19061ddfcce200725"
       },
-      "topicName": {
-        "value": "fetchedData"
+      "ServiceBusNamespace": {
+        "value": "https://prediction-vault.vault.azure.net/secrets/ServiceBusNamespace/16e4cdb6cad84db98423b658c3afdb66"
+      },
+      "ServiceBusConnectionString": {
+        "value": ""
+      },"MercadoBitcoinApiUser": {
+        "value": "https://prediction-vault.vault.azure.net/secrets/MercadoBitcoinApiUser/93a3d9e6d7e94637849e2aa74a0669e2"
+      },
+      "MercadoBitcoinApiPassword": {
+        "value": "https://prediction-vault.vault.azure.net/secrets/MercadoBitcoinApiPassword/0b66c88651344bb59410216e15289944"
       }
     }
   }

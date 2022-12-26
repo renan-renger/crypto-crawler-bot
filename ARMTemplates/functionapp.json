@@ -45,18 +45,46 @@
           "description": "The language worker runtime to load in the function app."
         }
       },
-      "queueName": {
+      "TenantId": {
         "type": "string",
-        "defaultValue": "defaultQueue",
+        "defaultValue": "",
         "metadata": {
-          "description": "Default ASB Queue for stack communication"
+          "description": "Tenant ID used for Managed Identity Authorization/Authentication"
         }
       },
-      "topicName": {
+      "UserAssignedClientId": {
         "type": "string",
-        "defaultValue": "defaultTopic",
+        "defaultValue": "",
         "metadata": {
-          "description": "Default ASB Topic for stack communication"
+          "description": "Client ID used for Managed Identity Authorization/Authentication"
+        }
+      },
+      "ServiceBusNamespace": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description" : "Namespace used by the Service Bus"
+        }
+      },
+      "ServiceBusConnectionString": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description" : "ServiceBus connection string, to be used instead of TenantId and UserAssignedClientId. If set to anything other than empty, will ignore both parameters and connect via ConnString."
+        }
+      },
+      "MercadoBitcoinApiUser": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description" : "API Key for Mercado Bitcoin, a Brazilian exchange for crypto assets - Refer to: https://api.mercadobitcoin.net/api/v4/docs"
+        }
+      },
+      "MercadoBitcoinApiPassword": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description" : "API Password for Mercado Bitcoin, a Brazilian exchange for crypto assets - Refer to: https://api.mercadobitcoin.net/api/v4/docs"
         }
       }
     },
@@ -67,7 +95,12 @@
       "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
       "functionWorkerRuntime": "[parameters('runtime')]",
       "appInsightsName": "[if(equals(parameters('appInsightsName'),''), parameters('appName'), parameters('appInsightsName'))]",
-      "serviceBusConnectionSecret": "[parameters('serviceBusConnectionSecret')]"
+      "TenantId": "[parameters('TenantId')]",
+      "UserAssignedClientId": "[parameters('UserAssignedClientId')]",
+      "ServiceBusNamespace": "[parameters('ServiceBusNamespace')]",
+      "ServiceBusConnectionString": "[parameters('ServiceBusConnectionString')]",
+      "MercadoBitcoinApiUser": "[parameters('MercadoBitcoinApiUser')]",
+      "MercadoBitcoinApiPassword": "[parameters('MercadoBitcoinApiPassword')]"
     },
     "resources": [
       {
@@ -154,12 +187,28 @@
                 "value": "[concat('@Microsoft.KeyVault(SecretUri=', variables('serviceBusConnectionSecret'), ')')]"
               },
               {
-                "name": "queueName",
-                "value": "variables('queueName')"
+                "name": "TenantId",
+                "value": "variables('TenantId')"
               },
               {
-                "name": "topicName",
-                "value": "variables('topicName')"
+                "name": "UserAssignedClientId",
+                "value": "variables('UserAssignedClientId')"
+              },
+              {
+                "name": "ServiceBusNamespace",
+                "value": "variables('ServiceBusNamespace')"
+              },
+              {
+                "name": "ServiceBusConnectionString",
+                "value": "variables('ServiceBusConnectionString')"
+              },
+              {
+                "name": "MercadoBitcoinApiUser",
+                "value": "variables('MercadoBitcoinApiUser')"
+              },
+              {
+                "name": "MercadoBitcoinApiPassword",
+                "value": "variables('MercadoBitcoinApiPassword')"
               }
             ]
           }

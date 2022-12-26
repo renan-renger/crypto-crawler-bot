@@ -221,3 +221,5 @@ CompiledIndexCache
 *.jfm
 /artifacts
 
+# Ignoring local configurations for all functions
+*/local.settings.json

@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "namespaces_crypto_comm_bus_name": {
-            "defaultValue": "crypto-comm-bus",
+            "defaultValue": "",
             "type": "String"
         }
     },
@@ -84,93 +84,6 @@
                 "rights": [
                     "Send"
                 ]
-            }
-        },
-        {
-            "type": "Microsoft.ServiceBus/namespaces/queues",
-            "apiVersion": "2017-04-01",
-            "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/pendingprocess')]",
-            "location": "Brazil South",
-            "dependsOn": [
-                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_crypto_comm_bus_name'))]"
-            ],
-            "properties": {
-                "lockDuration": "PT30S",
-                "maxSizeInMegabytes": 1024,
-                "requiresDuplicateDetection": false,
-                "requiresSession": false,
-                "defaultMessageTimeToLive": "P14D",
-                "deadLetteringOnMessageExpiration": false,
-                "enableBatchedOperations": true,
-                "duplicateDetectionHistoryTimeWindow": "PT10M",
-                "maxDeliveryCount": 10,
-                "status": "Active",
-                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
-                "enablePartitioning": false,
-                "enableExpress": false
-            }
-        },
-        {
-            "type": "Microsoft.ServiceBus/namespaces/topics",
-            "apiVersion": "2017-04-01",
-            "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/fetcheddata')]",
-            "location": "Brazil South",
-            "dependsOn": [
-                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_crypto_comm_bus_name'))]"
-            ],
-            "properties": {
-                "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
-                "maxSizeInMegabytes": 1024,
-                "requiresDuplicateDetection": false,
-                "duplicateDetectionHistoryTimeWindow": "PT10M",
-                "enableBatchedOperations": false,
-                "status": "Active",
-                "supportOrdering": false,
-                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
-                "enablePartitioning": false,
-                "enableExpress": false
-            }
-        },
-        {
-            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
-            "apiVersion": "2017-04-01",
-            "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/fetcheddata/ColdStorage')]",
-            "location": "Brazil South",
-            "dependsOn": [
-                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_crypto_comm_bus_name'), 'fetcheddata')]",
-                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_crypto_comm_bus_name'))]"
-            ],
-            "properties": {
-                "lockDuration": "PT1M",
-                "requiresSession": false,
-                "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
-                "deadLetteringOnMessageExpiration": false,
-                "deadLetteringOnFilterEvaluationExceptions": false,
-                "maxDeliveryCount": 10,
-                "status": "Active",
-                "enableBatchedOperations": false,
-                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
-            }
-        },
-        {
-            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
-            "apiVersion": "2017-04-01",
-            "name": "[concat(parameters('namespaces_crypto_comm_bus_name'), '/fetcheddata/manualLookup')]",
-            "location": "Brazil South",
-            "dependsOn": [
-                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_crypto_comm_bus_name'), 'fetcheddata')]",
-                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_crypto_comm_bus_name'))]"
-            ],
-            "properties": {
-                "lockDuration": "PT1M",
-                "requiresSession": false,
-                "defaultMessageTimeToLive": "P10675199DT2H48M5.4775807S",
-                "deadLetteringOnMessageExpiration": false,
-                "deadLetteringOnFilterEvaluationExceptions": false,
-                "maxDeliveryCount": 10,
-                "status": "Active",
-                "enableBatchedOperations": false,
-                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
             }
         }
     ]
