@@ -3,8 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "namespaces_crypto_comm_bus_name": {
-            "defaultValue": "",
-            "type": "String"
+            "type": "securestring"
         }
     },
     "variables": {},
@@ -19,12 +18,8 @@
                 "tier": "Standard"
             },
             "properties": {
-                "provisioningState": "Succeeded",
                 "metricId": "[concat('9a8cd194-f1dd-4ad8-9670-f2d2eb511c40:', parameters('namespaces_crypto_comm_bus_name'))]",
-                "createdAt": "2019-07-25T14:32:43.26Z",
-                "updatedAt": "2019-08-15T01:03:16.893Z",
-                "serviceBusEndpoint": "[concat('https://', parameters('namespaces_crypto_comm_bus_name'), '.servicebus.windows.net:443/')]",
-                "status": "Active"
+                "serviceBusEndpoint": "[concat('https://', parameters('namespaces_crypto_comm_bus_name'), '.servicebus.windows.net:443/')]"
             }
         },
         {
