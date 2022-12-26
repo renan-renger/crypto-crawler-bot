@@ -3,11 +3,11 @@
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "TenantId": "70a3e930-0f2b-4052-be40-4159ef7e161z",
-    "UserAssignedClientId": "f034ee1c-88e6-448f-8069-83e7e1373f46",
-    "ServiceBusNamespace": "sps-consumer.servicebus.windows.net",
+    "TenantId": "",
+    "UserAssignedClientId": "",
+    "ServiceBusNamespace": "",
     "ServiceBusConnectionString": "",
-    "MercadoBitcoinApiUser": "60ff85948d5eaf56f23131cd0811bede5ad80b523c29938189cf9113c5072352",
-    "MercadoBitcoinApiPassword": "49328ac1e5467c878bc1d7080e04494e6be9762a5a08663c440b592c52c4dc99"
+    "MercadoBitcoinApiUser": "",
+    "MercadoBitcoinApiPassword": ""
   }
 }
