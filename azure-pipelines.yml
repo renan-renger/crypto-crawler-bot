@@ -27,13 +27,13 @@ steps:
   inputs:
     command: build
     projects: '**/*.csproj'
-- task: DotNetCoreCLI@2
-  displayName: Publish Azure Function
+- task: AzureFunctionApp@1
+  displayName: 'Azure Function App Deploy: crypto-crawler'
   inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/CryptoCrawler.AzureFunc.csproj'
-    arguments: '--no-restore --configuration Release --output $(Build.ArtifactStagingDirectory)'
+    azureSubscription: 'Pay-As-You-Go(9a8cd194-f1dd-4ad8-9670-f2d2eb511c40)'
+    appType: functionApp
+    appName: 'crypto-crawler'
+    package: '$(System.DefaultWorkingDirectory)/renan-renger.crypto-crawler-bot/artifacts/CryptoCrawler.AzureFunc.zip'
 - task: DotNetCoreCLI@2
   displayName: Pack Contracts
   inputs:
