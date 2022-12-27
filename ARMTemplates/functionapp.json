@@ -170,10 +170,6 @@
                 "value": "[variables('functionWorkerRuntime')]"
               },
               {
-                "name": "ServiceBusConnectionString",
-                "value": "[concat('@Microsoft.KeyVault(SecretUri=', variables('serviceBusConnectionSecret'), ')')]"
-              },
-              {
                 "name": "TenantId",
                 "value": "variables('TenantId')"
               },
