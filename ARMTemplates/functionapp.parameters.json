@@ -9,21 +9,46 @@
         "value": "crypto-app-insights"
       },
       "TenantId": {
-        "value": "https://prediction-vault.vault.azure.net/secrets/TenantId/ec61ec40e24143ce8557ce6592f3d267"
+        "reference": {
+          "keyVault": {
+              "id": "/subscriptions/9a8cd194-f1dd-4ad8-9670-f2d2eb511c40/resourceGroups/crypto_prediction_stack/providers/Microsoft.KeyVault/vaults/prediction-vault"
+          },
+          "secretName": "TenantId"
+        }
       },
       "UserAssignedClientId": {
-        "value": "https://prediction-vault.vault.azure.net/secrets/UserAssignedClientId/7b2d2db7a8b142e19061ddfcce200725"
+        "reference": {
+          "keyVault": {
+              "id": "/subscriptions/9a8cd194-f1dd-4ad8-9670-f2d2eb511c40/resourceGroups/crypto_prediction_stack/providers/Microsoft.KeyVault/vaults/prediction-vault"
+          },
+          "secretName": "UserAssignedClientId"
+        }
       },
       "ServiceBusNamespace": {
-        "value": "https://prediction-vault.vault.azure.net/secrets/ServiceBusNamespace/16e4cdb6cad84db98423b658c3afdb66"
+        "reference": {
+          "keyVault": {
+              "id": "/subscriptions/9a8cd194-f1dd-4ad8-9670-f2d2eb511c40/resourceGroups/crypto_prediction_stack/providers/Microsoft.KeyVault/vaults/prediction-vault"
+          },
+          "secretName": "ServiceBusNamespace"
+        }
       },
       "ServiceBusConnectionString": {
         "value": ""
       },"MercadoBitcoinApiUser": {
-        "value": "https://prediction-vault.vault.azure.net/secrets/MercadoBitcoinApiUser/93a3d9e6d7e94637849e2aa74a0669e2"
+        "reference": {
+          "keyVault": {
+              "id": "/subscriptions/9a8cd194-f1dd-4ad8-9670-f2d2eb511c40/resourceGroups/crypto_prediction_stack/providers/Microsoft.KeyVault/vaults/prediction-vault"
+          },
+          "secretName": "MercadoBitcoinApiUser"
+        }
       },
       "MercadoBitcoinApiPassword": {
-        "value": "https://prediction-vault.vault.azure.net/secrets/MercadoBitcoinApiPassword/0b66c88651344bb59410216e15289944"
+        "reference": {
+          "keyVault": {
+              "id": "/subscriptions/9a8cd194-f1dd-4ad8-9670-f2d2eb511c40/resourceGroups/crypto_prediction_stack/providers/Microsoft.KeyVault/vaults/prediction-vault"
+          },
+          "secretName": "MercadoBitcoinApiPassword"
+        }
       }
     }
   }

@@ -15,13 +15,6 @@
           "description": "The name of the ApplicationInsight bound to function app that you wish to create."
         }
       },
-      "serviceBusConnectionSecret": {
-        "type": "string",
-        "defaultValue": "",
-        "metadata": {
-          "description": "Azure ServiceBus used to connect all the services together."
-        }
-      },
       "storageAccountType": {
         "type": "string",
         "defaultValue": "Standard_LRS",
@@ -46,43 +39,37 @@
         }
       },
       "TenantId": {
-        "type": "string",
-        "defaultValue": "",
+        "type": "securestring",
         "metadata": {
           "description": "Tenant ID used for Managed Identity Authorization/Authentication"
         }
       },
       "UserAssignedClientId": {
-        "type": "string",
-        "defaultValue": "",
+        "type": "securestring",
         "metadata": {
           "description": "Client ID used for Managed Identity Authorization/Authentication"
         }
       },
       "ServiceBusNamespace": {
-        "type": "string",
-        "defaultValue": "",
+        "type": "securestring",
         "metadata": {
           "description" : "Namespace used by the Service Bus"
         }
       },
       "ServiceBusConnectionString": {
         "type": "string",
-        "defaultValue": "",
         "metadata": {
           "description" : "ServiceBus connection string, to be used instead of TenantId and UserAssignedClientId. If set to anything other than empty, will ignore both parameters and connect via ConnString."
         }
       },
       "MercadoBitcoinApiUser": {
-        "type": "string",
-        "defaultValue": "",
+        "type": "securestring",
         "metadata": {
           "description" : "API Key for Mercado Bitcoin, a Brazilian exchange for crypto assets - Refer to: https://api.mercadobitcoin.net/api/v4/docs"
         }
       },
       "MercadoBitcoinApiPassword": {
-        "type": "string",
-        "defaultValue": "",
+        "type": "securestring",
         "metadata": {
           "description" : "API Password for Mercado Bitcoin, a Brazilian exchange for crypto assets - Refer to: https://api.mercadobitcoin.net/api/v4/docs"
         }
