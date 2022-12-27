@@ -32,7 +32,7 @@ namespace CryptoCrawler.AzureFunc.Functions
         }
 
         [FunctionName("BlockchainDataFetcher")]
-        public void Run([TimerTrigger("0 */60 * * * *")]TimerInfo myTimer, ILogger log)
+        public void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
         {
             try
             {
